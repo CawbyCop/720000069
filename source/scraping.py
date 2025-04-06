@@ -58,6 +58,9 @@ def extract_skills(text, skills_list):
         # Replace T&C to avoid detecting C as c programming language
         text = re.sub(r't\s*&\s*c\b', '', text, flags=re.IGNORECASE)
         
+        # Filter out c-suite for c programming language
+        text = re.sub(r'c-suite', '', text, flags=re.IGNORECASE)
+        
         # Remove common punctuation
         text = re.sub(r'[(),/:;]', ' ', text)
         
@@ -163,10 +166,10 @@ for page_num in range(1, MAX_PAGES + 1):
         else:
             print("No relevant skills found")
 
-        time.sleep(2)  # Basic rate limiting between job pages
+        time.sleep(1)  # Basic rate limiting between job pages
     
     print(f"\nCompleted page {page_num}. Total jobs with skills found: {len(all_job_data)}")
-    time.sleep(3)  # Pause between search result pages
+    time.sleep(2)  # Pause between search result pages
 
 
 
