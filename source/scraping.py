@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 import csv
 import time
 import re
+import os
 
 BASE_URL = "https://www.reed.co.uk"
 SEARCH_URL_TEMPLATE = "/jobs/data-analyst-jobs-in-united-kingdom?pageno={page}"
@@ -99,7 +100,7 @@ for page_num in range(1, MAX_PAGES + 1):
         processed_urls.add(job_url)
 
         job_title = job_link_tag.text.strip()
-        print(f"\nProcessing: {job_title[:60]}...")
+        print(f"\nProcessing: {job_title}")
 
         # Extract salary
         salary = "Not specified"
@@ -135,13 +136,8 @@ for page_num in range(1, MAX_PAGES + 1):
         if not job_soup:
             continue
 
-        # Try different possible selectors for job description
+        # Extract job description
         description_area = job_soup.find('div', {'class': 'description'})
-        if not description_area:
-            for selector in ['jobdescription', 'job-description']:
-                description_area = job_soup.find(['div', 'section'], {'class': selector}) or job_soup.find(['div', 'section'], {'id': selector})
-                if description_area:
-                    break
 
         found_skills = []
         if description_area:
@@ -165,7 +161,7 @@ for page_num in range(1, MAX_PAGES + 1):
         time.sleep(2)  # Basic rate limiting between job pages
     
     print(f"\nCompleted page {page_num}. Total jobs with skills found: {len(all_job_data)}")
-    time.sleep(5)  # Pause between search result pages
+    time.sleep(3)  # Pause between search result pages
 
 
 
@@ -174,7 +170,7 @@ for page_num in range(1, MAX_PAGES + 1):
 if all_job_data:
     print(f"\nScraping finished. Saving {len(all_job_data)} jobs to {OUTPUT_CSV}")
     try:
-        import os
+        
         os.makedirs(os.path.dirname(OUTPUT_CSV), exist_ok=True)
         with open(OUTPUT_CSV, 'w', newline='', encoding='utf-8-sig') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=['job_title', 'job_url', 'location', 'job_type', 'salary', 'skills'])
