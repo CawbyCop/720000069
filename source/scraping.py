@@ -14,11 +14,13 @@ import os
 BASE_URL = "https://www.reed.co.uk"
 SEARCH_URL_TEMPLATE = "/jobs/data-analyst-jobs-in-united-kingdom?pageno={page}"
 MAX_PAGES = 100
+START_PAGE = 62
+END_PAGE = 62
 OUTPUT_CSV = 'data/reed_uk_data_analyst_skills.csv' 
 
 # Technical skills to search for
 SKILLS_TO_FIND = [
-    'python', 'r', 'sql', 'java', 'julia', 'scala', 'c', 'javascript', 'swift', 'go', 'matlab', 'sas',
+    'python', 'r', 'sql', 'java', 'julia', 'scala', 'c', 'javascript', 'swift', 'matlab', 'sas',
     'excel', 'powerbi', 'power bi', 'tableau', 'spark', 'datalab', 'qlik', 'cpp'
 ]
 
@@ -49,13 +51,16 @@ def extract_skills(text, skills_list):
         text = re.sub(r'C\+\+', 'CPP', text, flags=re.IGNORECASE)
         text = text.lower()
         
+        # Handle c#
+        text = re.sub(r'c\s*#', '', text, flags=re.IGNORECASE)
+        
+        # Replace cv variations with empty string to avoid detecting as c programming language
+        text = re.sub(r'\bcv\b|c\.v\.?', '', text, flags=re.IGNORECASE)
+        
         # Replace grade references with empty string for grade (c) example which detects it as c programming language
         text = re.sub(r'grade\s*\d+\s*\(c\)', '', text, flags=re.IGNORECASE)
         
-        # Replace cv with empty string to avoid detecting C as c programming language
-        text = re.sub(r'\bcv\b', '', text, flags=re.IGNORECASE)
-        
-        # Replace T&C to avoid detecting C as c programming language
+        # Replace T&C to avoid detecting as c programming language
         text = re.sub(r't\s*&\s*c\b', '', text, flags=re.IGNORECASE)
         
         # Filter out c-suite for c programming language
@@ -75,7 +80,7 @@ def extract_skills(text, skills_list):
 all_job_data = []
 print("Starting scrape...")
 
-for page_num in range(1, MAX_PAGES + 1):
+for page_num in range(START_PAGE, END_PAGE + 1):
     search_url = BASE_URL + SEARCH_URL_TEMPLATE.format(page=page_num)
     print(f"\nScraping page {page_num}")
     

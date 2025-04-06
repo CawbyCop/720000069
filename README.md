@@ -13,4 +13,3 @@ https://www.datacamp.com/blog/top-programming-languages-for-data-scientists-in-2
 https://www.datacamp.com/blog/the-9-best-data-analytics-tools-for-data-analysts-in-2023
 
 ## TODO
-add location, job type/contract type
