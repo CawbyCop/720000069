@@ -22,7 +22,7 @@ SKILLS_TO_FIND = [
     'excel', 'powerbi', 'power bi', 'tableau', 'spark', 'datalab', 'qlik'
 ]
 
-# Special case for cpp
+# Special case that need careful pattern matching
 CPP_PATTERNS = [r'\bc\+\+\b', r'\bcpp\b']
 
 # Avoid duplicates
@@ -49,6 +49,10 @@ def extract_skills(text, skills_list):
     found_skills = set()
     if text:
         text = text.lower()
+        
+        # Replace grade references with empty string for grade (c) example which detects it as c programming language
+        text = re.sub(r'grade\s*\d+\s*\(c\)', '', text, flags=re.IGNORECASE)
+        
         # Remove common punctuation but preserve + for C++
         text = re.sub(r'[(),/:;]', ' ', text)
         
