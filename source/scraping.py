@@ -13,7 +13,7 @@ import os
 
 BASE_URL = "https://www.reed.co.uk"
 SEARCH_URL_TEMPLATE = "/jobs/data-analyst-jobs-in-united-kingdom?pageno={page}"
-MAX_PAGES = 1
+MAX_PAGES = 100
 OUTPUT_CSV = 'data/reed_uk_data_analyst_skills.csv' 
 
 # Technical skills to search for
@@ -51,6 +51,12 @@ def extract_skills(text, skills_list):
         
         # Replace grade references with empty string for grade (c) example which detects it as c programming language
         text = re.sub(r'grade\s*\d+\s*\(c\)', '', text, flags=re.IGNORECASE)
+        
+        # Replace cv with empty string to avoid detecting C as c programming language
+        text = re.sub(r'\bcv\b', '', text, flags=re.IGNORECASE)
+        
+        # Replace T&C to avoid detecting C as c programming language
+        text = re.sub(r't\s*&\s*c\b', '', text, flags=re.IGNORECASE)
         
         # Remove common punctuation
         text = re.sub(r'[(),/:;]', ' ', text)
