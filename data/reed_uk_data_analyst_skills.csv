@@ -1,20 +1,19 @@
-job_title,job_url,skills
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54606079?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"power bi, python, sql, tableau"
-Junior Data Analyst,https://www.reed.co.uk/jobs/junior-data-analyst/54664918?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"excel, power bi"
-Data Analyst Apprentice,https://www.reed.co.uk/jobs/data-analyst-apprentice/54636069?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"c, excel, power bi, sql"
-Principal Data Analyst,https://www.reed.co.uk/jobs/principal-data-analyst/54757746?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"python, sql, tableau"
-Data Analyst Apprentice,https://www.reed.co.uk/jobs/data-analyst-apprentice/54770347?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"c, excel, power bi"
-BI & Data Analyst,https://www.reed.co.uk/jobs/bi-data-analyst/54588925?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"power bi, tableau"
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54709993?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"power bi, sql"
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54617443?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"excel, sql"
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54574773?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"power bi, sql"
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54643195?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,sql
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54683411?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,sql
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54759157?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"power bi, powerbi, sql"
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54683542?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,sql
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54722739?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,sql
-Data analyst,https://www.reed.co.uk/jobs/data-analyst/54531202?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"powerbi, sql"
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54759019?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"power bi, sql"
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54410962?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,python
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54616487?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"excel, power bi, sql"
-Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54642479?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"power bi, sql, tableau"
+﻿job_title,job_url,location,job_type,salary,skills
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54606079?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,London,"Permanent, full-time",Competitive salary,"power bi, python, sql, tableau"
+Junior Data Analyst,https://www.reed.co.uk/jobs/junior-data-analyst/54664918?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Chertsey, Surrey","Permanent, full-time",Competitive salary,"excel, power bi"
+Data Analyst Apprentice,https://www.reed.co.uk/jobs/data-analyst-apprentice/54636069?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Stafford, Staffordshire","Permanent, full-time","£17,000 - £19,000 per annum","c, excel, power bi, sql"
+Principal Data Analyst,https://www.reed.co.uk/jobs/principal-data-analyst/54757746?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,London,"Permanent, full-time",Competitive salary,"python, sql, tableau"
+Data Analyst Apprentice,https://www.reed.co.uk/jobs/data-analyst-apprentice/54770347?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Trafford Park, Lancashire","Permanent, full-time","£18,000 - £21,000 per annum","c, excel, power bi"
+BI & Data Analyst,https://www.reed.co.uk/jobs/bi-data-analyst/54588925?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Loudwater, High Wycombe, Buckinghamshire","Permanent, full-time",Salary negotiable,"power bi, tableau"
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54709993?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Leicester, Leicestershire","Permanent, full-time","£40,000 - £51,000 per annum","power bi, sql"
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54617443?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,London,"Permanent, full-time",Salary negotiable,"excel, sql"
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54643195?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Sheffield, South Yorkshire","Permanent, full-time","£40,000 - £47,000 per annum",sql
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54683411?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Preston, Lancashire","Permanent, full-time","£40,000 - £60,000 per annum",sql
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54759157?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Stoke-on-Trent, Staffordshire","Permanent, full-time","£35,000 - £40,000 per annum","power bi, powerbi, sql"
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54683542?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Preston, Lancashire","Permanent, full-time","£50,000 - £60,000 per annum",sql
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54722739?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Coventry, West Midlands (County)","Permanent, full-time","£45,000 - £50,000 per annum",sql
+Data analyst,https://www.reed.co.uk/jobs/data-analyst/54531202?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Exeter, Devon","Contract, full-time",£300 - £340 per day,"powerbi, sql"
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54759019?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Crewe, Cheshire","Permanent, full-time","£35,000 - £45,000 per annum","power bi, sql"
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54410962?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Southampton, Hampshire","Permanent, full-time","£40,000 - £60,000 per annum",python
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54616487?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Poole, Dorset","Permanent, full-time",Salary negotiable,"excel, power bi, sql"
+Data Analyst,https://www.reed.co.uk/jobs/data-analyst/54642479?source=searchResults&filter=%2Fjobs%2Fdata-analyst-jobs-in-united-kingdom,"Sheffield, South Yorkshire","Permanent, full-time","£42,000 - £46,000 per annum","power bi, sql, tableau"

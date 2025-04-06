@@ -1,9 +1,7 @@
 """
-Reed.co.uk data analyst job skills scraper in UK
-
-This script scrapes job listings for data analyst positions from Reed.co.uk,
-extracting technical skills mentioned in job descriptions. 
-The results are saved to a CSV file.
+This script scrapes job listings for data analyst positions from Reed.co.uk in the UK,
+extracting job title, skills, job types and locations mentioned. 
+The results are saved to a CSV file in data/ directory.
 """
 
 import requests
@@ -17,13 +15,13 @@ SEARCH_URL_TEMPLATE = "/jobs/data-analyst-jobs-in-united-kingdom?pageno={page}"
 MAX_PAGES = 1
 OUTPUT_CSV = 'data/reed_uk_data_analyst_skills.csv' 
 
-# List of technical skills to search for in job descriptions
+# List of technical skills to search for
 SKILLS_TO_FIND = [
     'python', 'r', 'sql', 'java', 'julia', 'scala', 'c', 'c++', 'javascript', 'swift', 'go', 'matlab', 'sas',
     'excel', 'powerbi', 'power bi', 'tableau', 'spark', 'datalab', 'qlik'
 ]
 
-# Track processed URLs to avoid duplicates
+# Avoid duplicates
 processed_urls = set()
 
 ############################# Helper functions ##############################
@@ -47,10 +45,10 @@ def extract_skills(text, skills_list):
     found_skills = set()
     if text:
         text = text.lower()
-        # Remove common punctuation that might interfere with word boundaries
+        # Remove common punctuation
         text = re.sub(r'[(),/:;]', ' ', text)
         for skill in skills_list:
-            # Use word boundaries to avoid partial matches
+            # Use word boundaries
             if re.search(r'\b' + re.escape(skill) + r'\b', text):
                 found_skills.add(skill)
     return list(found_skills)
@@ -69,7 +67,7 @@ for page_num in range(1, MAX_PAGES + 1):
     if not search_soup:
         continue
 
-    # Find all job cards, handling different possible HTML structures
+    # Find all job cards
     job_cards = search_soup.find_all('article', {'data-card': 'job'})
     if not job_cards:
         job_cards = search_soup.find_all('article', class_=re.compile(r'job-card_jobCard__\w+'))
@@ -77,24 +75,53 @@ for page_num in range(1, MAX_PAGES + 1):
     print(f"Found {len(job_cards)} jobs on page {page_num}")
 
     for card in job_cards:
-        # Job link and title
+        # Job title
         job_link_tag = card.find('a', attrs={'data-qa': 'job-card-title'})
         if not (job_link_tag and 'href' in job_link_tag.attrs):
             continue
-
+        # Job link
         job_url = job_link_tag['href']
         if not job_url.startswith('http'):
             job_url = BASE_URL + job_url
             
         # Duplicate check
         if job_url in processed_urls:
-            print(f"Skipping card: Already processed URL {job_url}")
+            print(f"\nSkipping card: Already processed URL {job_url}")
             continue
         processed_urls.add(job_url)
 
         job_title = job_link_tag.text.strip()
-        print(f"Processing: {job_title[:60]}...")
+        print(f"\nProcessing: {job_title[:60]}...")
+
+        # Extract salary
+        salary = "Not specified"
+        salary_tag = None
+        # Search for list items containing salary information
+        for li in card.find_all('li'):
+            if li.text and re.search(r'£|\bper\b|salary|annum|hour|day|week|month|year', li.text.lower()):
+                salary_tag = li
+                break
         
+        if salary_tag:
+            salary = salary_tag.text.strip()
+        print(f"Salary: {salary}")
+        
+        # Extract location
+        location = "Not specified"
+        location_tag = card.find('li', attrs={'data-qa': 'job-card-location'})
+        if location_tag:
+            location = location_tag.text.strip()
+        print(f"Location: {location}")
+            
+        # Extract job type
+        job_type = "Not specified"
+        metadata_list = card.find_all('li', class_=re.compile(r'job-card_jobMetadata__\w+'))
+        for item in metadata_list:
+            if item.text and "permanent" in item.text.lower() or "contract" in item.text.lower() or "temporary" in item.text.lower():
+                job_type = item.text.strip()
+                break
+        print(f"Job type: {job_type}")
+
         # Individual job page
         job_soup = get_soup(job_url)
         if not job_soup:
@@ -108,21 +135,28 @@ for page_num in range(1, MAX_PAGES + 1):
                 if description_area:
                     break
 
+        found_skills = []
         if description_area:
             # Combine all text parts and clean up whitespace
             job_description = ' '.join(part.strip() for part in description_area.stripped_strings)
             found_skills = extract_skills(job_description, SKILLS_TO_FIND)
-            if found_skills:
-                print(f"Found skills: {', '.join(found_skills)}")
-                all_job_data.append({
-                    'job_title': job_title,
-                    'job_url': job_url,
-                    'skills': ', '.join(sorted(found_skills))
-                })
+            
+        if found_skills:
+            print(f"Found skills: {', '.join(found_skills)}")
+            all_job_data.append({
+                'job_title': job_title,
+                'job_url': job_url,
+                'location': location,
+                'job_type': job_type,
+                'salary': salary,
+                'skills': ', '.join(sorted(found_skills))
+            })
+        else:
+            print("No relevant skills found")
 
         time.sleep(2)  # Basic rate limiting between job pages
     
-    print(f"Completed page {page_num}. Total jobs with skills found: {len(all_job_data)}")
+    print(f"\nCompleted page {page_num}. Total jobs with skills found: {len(all_job_data)}")
     time.sleep(5)  # Pause between search result pages
 
 
@@ -134,8 +168,8 @@ if all_job_data:
     try:
         import os
         os.makedirs(os.path.dirname(OUTPUT_CSV), exist_ok=True)
-        with open(OUTPUT_CSV, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=['job_title', 'job_url', 'skills'])
+        with open(OUTPUT_CSV, 'w', newline='', encoding='utf-8-sig') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=['job_title', 'job_url', 'location', 'job_type', 'salary', 'skills'])
             writer.writeheader()
             writer.writerows(all_job_data)
         print("Successfully saved to CSV")
