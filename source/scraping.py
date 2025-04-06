@@ -19,11 +19,8 @@ OUTPUT_CSV = 'data/reed_uk_data_analyst_skills.csv'
 # Technical skills to search for
 SKILLS_TO_FIND = [
     'python', 'r', 'sql', 'java', 'julia', 'scala', 'c', 'javascript', 'swift', 'go', 'matlab', 'sas',
-    'excel', 'powerbi', 'power bi', 'tableau', 'spark', 'datalab', 'qlik'
+    'excel', 'powerbi', 'power bi', 'tableau', 'spark', 'datalab', 'qlik', 'cpp'
 ]
-
-# Special case that need careful pattern matching
-CPP_PATTERNS = [r'\bc\+\+\b', r'\bcpp\b']
 
 # Avoid duplicates
 processed_urls = set()
@@ -48,19 +45,17 @@ def extract_skills(text, skills_list):
     """
     found_skills = set()
     if text:
+        # Convert c++ to cpp
+        text = re.sub(r'C\+\+', 'CPP', text, flags=re.IGNORECASE)
         text = text.lower()
         
         # Replace grade references with empty string for grade (c) example which detects it as c programming language
         text = re.sub(r'grade\s*\d+\s*\(c\)', '', text, flags=re.IGNORECASE)
         
-        # Remove common punctuation but preserve + for C++
+        # Remove common punctuation
         text = re.sub(r'[(),/:;]', ' ', text)
         
-        # Special handling for C++/CPP
-        if any(re.search(pattern, text) for pattern in CPP_PATTERNS):
-            found_skills.add('cpp')
-            
-        # Handle regular skills
+        # Handle all skills
         for skill in skills_list:
             if re.search(r'\b' + re.escape(skill) + r'\b', text):
                 found_skills.add(skill)
