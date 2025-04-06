@@ -18,7 +18,7 @@ OUTPUT_CSV = 'data/reed_uk_data_analyst_skills.csv'
 
 # Technical skills to search for
 SKILLS_TO_FIND = [
-    'python', 'r', 'sql', 'java', 'julia', 'scala', 'c', 'javascript', 'swift', 'matlab', 'sas',
+    'python', 'r', 'sql', 'java', 'julia', 'scala', 'javascript', 'swift', 'matlab', 'sas',
     'excel', 'powerbi', 'power bi', 'tableau', 'spark', 'datalab', 'qlik', 'cpp'
 ]
 
@@ -48,21 +48,6 @@ def extract_skills(text, skills_list):
         # Convert c++ to cpp
         text = re.sub(r'C\+\+', 'CPP', text, flags=re.IGNORECASE)
         text = text.lower()
-        
-        # Handle c#
-        text = re.sub(r'c\s*#', '', text, flags=re.IGNORECASE)
-        
-        # Replace cv variations with empty string to avoid detecting as c programming language
-        text = re.sub(r'\bcv\b|c\.v\.?', '', text, flags=re.IGNORECASE)
-        
-        # Replace grade references with empty string for grade (c) example which detects it as c programming language
-        text = re.sub(r'grade\s*\d+\s*\(c\)', '', text, flags=re.IGNORECASE)
-        
-        # Replace T&C to avoid detecting as c programming language
-        text = re.sub(r't\s*&\s*c\b', '', text, flags=re.IGNORECASE)
-        
-        # Filter out c-suite for c programming language
-        text = re.sub(r'c-suite', '', text, flags=re.IGNORECASE)
         
         # Remove common punctuation
         text = re.sub(r'[(),/:;]', ' ', text)
