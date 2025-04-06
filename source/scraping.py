@@ -14,8 +14,6 @@ import os
 BASE_URL = "https://www.reed.co.uk"
 SEARCH_URL_TEMPLATE = "/jobs/data-analyst-jobs-in-united-kingdom?pageno={page}"
 MAX_PAGES = 100
-START_PAGE = 62
-END_PAGE = 62
 OUTPUT_CSV = 'data/reed_uk_data_analyst_skills.csv' 
 
 # Technical skills to search for
@@ -80,7 +78,7 @@ def extract_skills(text, skills_list):
 all_job_data = []
 print("Starting scrape...")
 
-for page_num in range(START_PAGE, END_PAGE + 1):
+for page_num in range(1, MAX_PAGES + 1):
     search_url = BASE_URL + SEARCH_URL_TEMPLATE.format(page=page_num)
     print(f"\nScraping page {page_num}")
     
