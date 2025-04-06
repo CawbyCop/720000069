@@ -15,11 +15,14 @@ SEARCH_URL_TEMPLATE = "/jobs/data-analyst-jobs-in-united-kingdom?pageno={page}"
 MAX_PAGES = 1
 OUTPUT_CSV = 'data/reed_uk_data_analyst_skills.csv' 
 
-# List of technical skills to search for
+# Technical skills to search for
 SKILLS_TO_FIND = [
-    'python', 'r', 'sql', 'java', 'julia', 'scala', 'c', 'c++', 'javascript', 'swift', 'go', 'matlab', 'sas',
+    'python', 'r', 'sql', 'java', 'julia', 'scala', 'c', 'javascript', 'swift', 'go', 'matlab', 'sas',
     'excel', 'powerbi', 'power bi', 'tableau', 'spark', 'datalab', 'qlik'
 ]
+
+# Special case for cpp
+CPP_PATTERNS = [r'\bc\+\+\b', r'\bcpp\b']
 
 # Avoid duplicates
 processed_urls = set()
@@ -45,10 +48,15 @@ def extract_skills(text, skills_list):
     found_skills = set()
     if text:
         text = text.lower()
-        # Remove common punctuation
+        # Remove common punctuation but preserve + for C++
         text = re.sub(r'[(),/:;]', ' ', text)
+        
+        # Special handling for C++/CPP
+        if any(re.search(pattern, text) for pattern in CPP_PATTERNS):
+            found_skills.add('cpp')
+            
+        # Handle regular skills
         for skill in skills_list:
-            # Use word boundaries
             if re.search(r'\b' + re.escape(skill) + r'\b', text):
                 found_skills.add(skill)
     return list(found_skills)
