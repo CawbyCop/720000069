@@ -9,6 +9,7 @@
 |-- data/
 |-- source/
 |-- blog.ipynb
+|-- blog.pdf
 |-- README.md
 ```
 
