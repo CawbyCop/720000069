@@ -1,5 +1,5 @@
 """
-This script is used to convert the jupyter notebook to a PDF file.
+This script is used to convert the jupyter notebook to a PDF file with cell tags functionality using nbconvert.
 Code is from https://nbconvert.readthedocs.io/en/latest/removing_cells.html
 but uses PDFExporter instead of HTMLExporter.
 """
@@ -21,6 +21,10 @@ c.TagRemovePreprocessor.enabled = True
 
 # Configure and run out exporter
 c.PDFExporter.preprocessors = ["nbconvert.preprocessors.TagRemovePreprocessor"]
+
+# Remove date and added title instead of "blog"
+c.LatexPreprocessor.date = ""
+c.LatexPreprocessor.title = "Decoding the UK Analyst Role: What Do Employers Want?"
 
 exporter = PDFExporter(config=c)
 exporter.register_preprocessor(TagRemovePreprocessor(config=c), True)
