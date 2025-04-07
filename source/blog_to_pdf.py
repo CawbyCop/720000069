@@ -33,6 +33,6 @@ exporter.register_preprocessor(TagRemovePreprocessor(config=c), True)
 # second with notebook metadata
 output = PDFExporter(config=c).from_filename("blog.ipynb")
 
-# Write to output html file
+# Write to output pdf file
 with open("blog.pdf", "wb") as f:
     f.write(output[0])
