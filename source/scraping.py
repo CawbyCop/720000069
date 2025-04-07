@@ -1,7 +1,7 @@
 """
-This script scrapes job listings for data analyst positions from Reed.co.uk in the UK,
-extracting job title, skills, job types and locations mentioned. 
-The results are saved to a CSV file in data/ directory.
+This script scrapes job listings for analyst positions from Reed.co.uk in the UK,
+extracting job title, skills, job types, salary, and locations. 
+The results are saved to a CSV file named 'reed_uk_data_analyst_skills.csv' in data/ directory.
 """
 
 import requests
@@ -17,6 +17,7 @@ MAX_PAGES = 100
 OUTPUT_CSV = 'data/reed_uk_data_analyst_skills.csv' 
 
 # Technical skills to search for
+# Skills have been taken from the references listed in the README.md file
 SKILLS_TO_FIND = [
     'python', 'r', 'sql', 'java', 'julia', 'scala', 'javascript', 'swift', 'matlab', 'sas',
     'excel', 'powerbi', 'power bi', 'tableau', 'spark', 'datalab', 'qlik', 'cpp'
