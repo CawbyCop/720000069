@@ -22,7 +22,7 @@ c.PDFExporter.preprocessors = ["nbconvert.preprocessors.TagRemovePreprocessor"]
 
 # Remove date and added title instead of "blog"
 c.LatexPreprocessor.date = ""
-c.LatexPreprocessor.title = "Decoding the UK Analyst Role: What Do Employers Want?"
+c.LatexPreprocessor.title = "Analysing the UK Analyst Role: What Do Employers Want?"
 
 exporter = PDFExporter(config=c)
 exporter.register_preprocessor(TagRemovePreprocessor(config=c), True)

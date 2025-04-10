@@ -1,4 +1,4 @@
-# Decoding the UK Analyst Role: What Do Employers Want?
+# Analysing the UK Analyst Role: What Do Employers Want?
 
 
 ## Introduction
