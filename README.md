@@ -7,9 +7,15 @@
 
 ```
 |-- data/
+    |-- reed_uk_data_analyst_skills.csv
+|-- results/
+    |-- visualisation plots
 |-- source/
-|-- blog.ipynb
-|-- blog.pdf
+    |-- blog_format.py # Blog to pdf code (blog.ipynb to blog.pdf)
+    |-- data_analysis.ipynb # Data processing, analysis, and visualisation code
+    |-- scraping.py # Webscraping data collection code
+|-- blog.ipynb # Blog source code
+|-- blog.pdf # Formatted blog in pdf format
 |-- README.md
 ```
 
