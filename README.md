@@ -15,10 +15,10 @@ This repository contains the final project for BEE2041 Data Science in Economics
     |-- blog_format.py # Blog to pdf code (blog.ipynb to blog.pdf)
     |-- data_analysis.ipynb # Data processing, analysis, and visualisation code
     |-- scraping.py # Webscraping data collection code
+|-- bee2041.yml # Anaconda environment
 |-- blog.ipynb # Blog source code
 |-- blog.pdf # Formatted blog in pdf format
 |-- README.md
-|-- bee2041.yml # Anaconda environment
 ```
 
 ## Running instructions
