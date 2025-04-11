@@ -155,7 +155,7 @@ for page_num in range(1, MAX_PAGES + 1):
         else:
             print("No relevant skills found")
 
-        time.sleep(1)  # Basic rate limiting between job pages
+        time.sleep(1)  # Rate limiting between job pages
     
     print(f"\nCompleted page {page_num}. Total jobs with skills found: {len(all_job_data)}")
     time.sleep(2)  # Pause between search result pages

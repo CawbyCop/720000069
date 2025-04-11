@@ -1,5 +1,5 @@
 """
-This script is used to convert the jupyter notebook to a PDF file with cell tags functionality using nbconvert.
+This script is used to convert the jupyter notebook to a PDF file.
 Code is from https://nbconvert.readthedocs.io/en/latest/removing_cells.html
 but uses PDFExporter instead of HTMLExporter.
 """
