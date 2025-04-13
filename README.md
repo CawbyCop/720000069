@@ -32,6 +32,6 @@ This repository contains the final project for BEE2041 Data Science in Economics
 4. Finally, running source/blog_format.py will format blog.ipynb into blog.pdf for readability.
 
 ## References
-
+The references below were used to create the predefined list of skills used during web scraping:  
 https://www.datacamp.com/blog/top-programming-languages-for-data-scientists-in-2022  
 https://www.datacamp.com/blog/the-9-best-data-analytics-tools-for-data-analysts-in-2023
